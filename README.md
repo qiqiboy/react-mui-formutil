@@ -2,36 +2,43 @@
 
 [![npm](https://img.shields.io/npm/v/react-material-formutil.svg?style=flat)](https://npm.im/react-material-formutil)
 
-Happy to use react-formutil in the project based on `Material-UI` ^_^
+Happy to use react-formutil in the project based on `Material-UI` ^\_^
 
 在 [Material-UI](https://github.com/mui-org/material-ui) 项目，结
 合[react-formutil](https://github.com/qiqiboy/react-formutil) 来快速构建表单。
 
 <!-- vim-markdown-toc GFM -->
 
-* [安装 Installation](#安装-installation)
-* [使用 Usage](#使用-usage)
-  * [`<FormControl />`](#formcontrol-)
-    * [`name`](#name)
-    * [`$defaultValue`](#defaultvalue)
-    * [`$validators`](#validators)
-    * [`controlProps`](#controlprops)
-    * [`$parser`](#parser)
-    * [`$formatter`](#formatter)
-    * [`checked` `unchecked`](#checked-unchecked)
-    * [`validMessage`](#validmessage)
-    * [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
-  * [`支持的组件`](#支持的组件)
-    * [`TextField`](#textfield)
-    * [`Input`](#input)
-    * [`Checkbox`](#checkbox)
-    * [`Radio`](#radio)
-    * [`Switch`](#switch)
-    * [`DatePicker`](#datepicker)
-    * [`TimePicker`](#timepicker)
-    * [`DateTimePicker`](#datetimepicker)
-* [FAQ](#faq)
-  * [`给组件设置的 onChange、onFocus 等方法无效、不执行`](#给组件设置的-onchangeonfocus-等方法无效不执行)
+- [安装 Installation](#安装-installation)
+- [使用 Usage](#使用-usage)
+    + [`<FormControl />`](#formcontrol-)
+        * [`component`](#component)
+        * [`name`](#name)
+        * [`$defaultValue`](#defaultvalue)
+        * [`$validators`](#validators)
+        * [`controlProps`](#controlprops)
+        * [`label`](#label)
+        * [`helperText`](#helpertext)
+        * [`$parser`](#parser)
+        * [`$formatter`](#formatter)
+        * [`checked` `unchecked`](#checked-unchecked)
+        * [`validMessage`](#validmessage)
+        * [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
+    + [`支持的组件`](#支持的组件)
+        * [`TextField`](#textfield)
+        * [`Select`](#select)
+        * [`NativeSelect`](#nativeselect)
+        * [`Input`](#input)
+        * [`Checkbox`](#checkbox)
+        * [`Radio`](#radio)
+        * [`Switch`](#switch)
+        * [`FormControlLabel`](#formcontrollabel)
+        * [`DatePicker`](#datepicker)
+        * [`TimePicker`](#timepicker)
+        * [`DateTimePicker`](#datetimepicker)
+- [FAQ](#faq)
+    + [`给组件设置的 onChange、onFocus 等方法无效、不执行`](#给组件设置的-onchangeonfocus-等方法无效不执行)
+    + [`为什么有些搭配某些组件时必须给 FormControl 传递 component 参数呢？`](#为什么有些搭配某些组件时必须给-formcontrol-传递-component-参数呢)
 
 <!-- vim-markdown-toc -->
 
@@ -96,6 +103,24 @@ class MyForm extends Component {
 
 > `FormControl`下只允许放置一个表单组件，不允许多个。
 
+##### `component`
+
+`component`不是必须的，但是对于 `Checkbox` `Radio` `Switch` `TextField` 这四种组件，必须通过`component`传递其组件名，以告诉`FormControl`需要特殊处理。
+
+```javascript
+<FormControl name="name" component="TextField">
+    <TextField />
+</FormControl>
+
+<FormControl name="agree" component="Switch">
+    <Switch />
+</FormControl>
+
+<FormControl name="agree" component="Checkbox">
+    <Checkbox />
+</FormControl>
+```
+
 ##### `name`
 
 设置输入项的 name 值，表单项将会以 name 作为 key 收集到 formutil 的状态中。支持嵌套语法 _（同`react-formutil`的`Field`同
@@ -113,14 +138,14 @@ class MyForm extends Component {
 
 > 同 react-formutil 的 EasyField，FormControl 也内置了同样的校验规则：
 
-> * `required` 必填 `required`
-> * `maxLength` 。最大输入长度，有效输入时才会校验 `maxLength="100"`
-> * `minLength` 最小输入长度，有效输入时才会校验 `minLength="10"`
-> * `max` 最大输入数值，仅支持 Number 比较。有效输入时才会校验 `max="100"`
-> * `min` 最小输入数值，仅支持 Number 比较。有效输入时才会校验 `min="10"`
-> * `pattern` 正则匹配。有效输入时才会校验 `pattern={/^\d+$/}`
-> * `enum` 枚举值检测。有效输入时才会校验 `enum={[1,2,3]}`
-> * `checker` 自定义校验函数。`checker={value => value > 10 && value < 100 || ' 输入比如大于 10 小与 100'}`
+> -   `required` 必填 `required`
+> -   `maxLength` 。最大输入长度，有效输入时才会校验 `maxLength="100"`
+> -   `minLength` 最小输入长度，有效输入时才会校验 `minLength="10"`
+> -   `max` 最大输入数值，仅支持 Number 比较。有效输入时才会校验 `max="100"`
+> -   `min` 最小输入数值，仅支持 Number 比较。有效输入时才会校验 `min="10"`
+> -   `pattern` 正则匹配。有效输入时才会校验 `pattern={/^\d+$/}`
+> -   `enum` 枚举值检测。有效输入时才会校验 `enum={[1,2,3]}`
+> -   `checker` 自定义校验函数。`checker={value => value > 10 && value < 100 || ' 输入比如大于 10 小与 100'}`
 
 注：校验属性的值为 `null` 时表示不进行该校验
 
@@ -137,7 +162,7 @@ class MyForm extends Component {
         fullWidth: true
     }}>
     <Input />
-</FormControl>;
+</FormControl>
 ```
 
 ##### `label`
@@ -179,7 +204,7 @@ class MyForm extends Component {
 ```javascript
 <FormControl $parser={value => parseInt(value)}>
     <Input />
-</FormControl>;
+</FormControl>
 ```
 
 ##### `$formatter`
@@ -189,7 +214,7 @@ class MyForm extends Component {
 ```javascript
 <FormControl $formatter={value => '$' + value}>
     <Input />
-</FormControl>;
+</FormControl>
 ```
 
 ##### `checked` `unchecked`
@@ -200,7 +225,7 @@ class MyForm extends Component {
 ```javascript
 <FormControl checked="yes" unchecked="no">
     <Switch />
-</FormControl>;
+</FormControl>
 ```
 
 该示例中， 当 Switch 为开时，获取的值将为 yes。
@@ -217,7 +242,7 @@ class MyForm extends Component {
         required: '请输入用户名'
     }}>
     <Input />
-</FormControl>;
+</FormControl>
 ```
 
 ##### `valuePropName` `changePropName` `focusPropName` `blurPropName`
@@ -231,17 +256,19 @@ class MyForm extends Component {
 //禁用focus、blur状态同步
 <FormControl focusPropName={null} blurPropName={null} name="username">
     <Input />
-</FormControl>;
+</FormControl>
 ```
 
 #### `支持的组件`
 
 ##### [`TextField`](https://material-ui.com/api/text-field/)
 
+**注意**：`component="TextField"` 必须不可少。
+
 ```javascript
-<FormControl name="name">
+<FormControl name="name" component="TextField">
     <TextField label="Name" margin="normal" />
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`Select`](https://material-ui.com/api/select/)
@@ -256,7 +283,7 @@ class MyForm extends Component {
         <MenuItem value={20}>Twenty</MenuItem>
         <MenuItem value={30}>Thirty</MenuItem>
     </Select>
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`NativeSelect`](https://material-ui.com/api/native-select/)
@@ -269,7 +296,7 @@ class MyForm extends Component {
         <option value={20}>Twenty</option>
         <option value={30}>Thirty</option>
     </NativeSelect>
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`Input`](https://material-ui.com/api/input/)
@@ -277,31 +304,37 @@ class MyForm extends Component {
 ```javascript
 <FormControl name="name">
     <Input />}
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`Checkbox`](https://material-ui.com/api/checkbox/)
 
+**注意**：`component="Checkbox"` 必须不可少。
+
 ```javascript
-<FormControl name="agree">
+<FormControl name="agree" component="Checkbox">
     <Checkbox />}
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`Radio`](https://material-ui.com/api/radio/)
 
+**注意**：`component="Radio"` 必须不可少。
+
 ```javascript
-<FormControl name="agree">
+<FormControl name="agree" component="Radio">
     <Radio />}
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`Switch`](https://material-ui.com/api/switch/)
 
+**注意**：`component="Switch"` 必须不可少。
+
 ```javascript
-<FormControl name="agree">
+<FormControl name="agree" component="Switch">
     <Switch />}
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`FormControlLabel`](https://material-ui.com/api/form-control-label/)
@@ -311,7 +344,7 @@ class MyForm extends Component {
 ```javascript
 <FormControl name="agree">
     <FormControlLabel control={<Checkbox />} />
-</FormControl>;
+</FormControl>
 ```
 
 ##### [`DatePicker`](https://material-ui-pickers.firebaseapp.com/demo/datepicker)
@@ -336,5 +369,11 @@ class MyForm extends Component {
 ```javascript
 <FormControl name="test" onChange={ev => console.log('change', ev)} onFocus={ev => console.log('focus', ev)}>
     <Input />
-</FormControl>;
+</FormControl>
 ```
+
+#### `为什么有些搭配某些组件时必须给 FormControl 传递 component 参数呢？`
+
+由于`material-ui`库的设计，其一些组件使用了 `withStyles` 高阶组件包装，导致代码压缩后无法区别到底是哪个组件类型，也就无法针对这些组件做特殊状态同步处理。
+
+所以对于 `Checkbox` `Radio` `Switch` `TextField` 这四种需要特殊处理的组件，必须传递 `component` 参数，以确保正确运行。

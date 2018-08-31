@@ -3,6 +3,7 @@ import { withForm, FormControl } from 'app/../../src';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
+import moment from 'moment';
 import { hobbiesOptions } from './config';
 
 import {
@@ -31,10 +32,14 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = () => ({
     formGroup: {
-        margin: '20px 0'
+        margin: '20px 0 !important'
     },
     pageTitle: {
         textAlign: 'center'
+    },
+    overflow: {
+        overflow: 'hidden',
+        wordWrap: 'break-word'
     }
 });
 
@@ -80,20 +85,22 @@ class App extends Component {
                         <form autoComplete="off" onSubmit={this.submit}>
                             <h3>TextField</h3>
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.name"
                                         required
+                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
                                         <TextField label="Name" margin="normal" />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.password-input"
                                         required
+                                        component="textfield"
                                         $defaultValue="hello world"
                                         controlProps={{
                                             fullWidth: true
@@ -107,10 +114,11 @@ class App extends Component {
                                         />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.readonly"
                                         required
+                                        component="textfield"
                                         $defaultValue="hello world"
                                         controlProps={{
                                             fullWidth: true
@@ -125,20 +133,22 @@ class App extends Component {
                                         />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.multiline"
                                         required
+                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
                                         <TextField id="multiline-static" label="Multiline" multiline margin="normal" />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.placeholder"
                                         required
+                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -150,10 +160,11 @@ class App extends Component {
                                         />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.number"
                                         required
+                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -167,10 +178,11 @@ class App extends Component {
                                         />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.search"
                                         required
+                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -182,10 +194,11 @@ class App extends Component {
                                         />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.select"
                                         required
+                                        component="textfield"
                                         $defaultValue="Apple"
                                         helperText="helper text"
                                         controlProps={{
@@ -200,10 +213,11 @@ class App extends Component {
                                         </TextField>
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="textfield.nativeselect"
                                         required
+                                        component="textfield"
                                         $defaultValue="Apple"
                                         controlProps={{
                                             fullWidth: true
@@ -228,7 +242,7 @@ class App extends Component {
 
                             <h3>Input</h3>
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="input.normal"
                                         controlProps={{
@@ -239,7 +253,7 @@ class App extends Component {
                                         <Input placeholder="Placeholder" />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="input.adornment"
                                         controlProps={{
@@ -257,7 +271,7 @@ class App extends Component {
 
                             <h3>Formatted inputs</h3>
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="input.mask"
                                         controlProps={{
@@ -269,7 +283,7 @@ class App extends Component {
                                         <Input inputComponent={TextMaskCustom} />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="input.icon"
                                         controlProps={{
@@ -290,7 +304,7 @@ class App extends Component {
 
                             <h3>Select</h3>
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="select"
                                         controlProps={{
@@ -316,13 +330,18 @@ class App extends Component {
                             <h3>Switch</h3>
 
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
-                                    <FormControl name="switch.single" required>
+                                <Grid item xs={12} sm={4}>
+                                    <FormControl name="switch.single" required component="switch">
                                         <Switch />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
-                                    <FormControl name="switch.label" required checked="yes" unchecked="no">
+                                <Grid item xs={12} sm={4}>
+                                    <FormControl
+                                        name="switch.label"
+                                        required
+                                        checked="yes"
+                                        unchecked="no"
+                                        component="control.switch">
                                         <FormControlLabel control={<Switch />} label="The label" />
                                     </FormControl>
                                 </Grid>
@@ -331,13 +350,18 @@ class App extends Component {
                             <h3>Checkbox</h3>
 
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
-                                    <FormControl name="checkbox.single" required>
+                                <Grid item xs={12} sm={4}>
+                                    <FormControl name="checkbox.single" required component="checkbox">
                                         <Checkbox />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
-                                    <FormControl name="checkbox.label" required checked="yes" unchecked="no">
+                                <Grid item xs={12} sm={4}>
+                                    <FormControl
+                                        name="checkbox.label"
+                                        required
+                                        checked="yes"
+                                        unchecked="no"
+                                        component="control.checkbox">
                                         <FormControlLabel control={<Checkbox />} label="The label" />
                                     </FormControl>
                                 </Grid>
@@ -346,17 +370,17 @@ class App extends Component {
                             <h3>Radio</h3>
 
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
-                                    <FormControl name="radio.single" required>
+                                <Grid item xs={12} sm={4}>
+                                    <FormControl name="radio.single" required component="radio">
                                         <Radio />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
-                                    <FormControl name="radio.label" required checked="yes">
+                                <Grid item xs={12} sm={4}>
+                                    <FormControl name="radio.label" required checked="yes" component="control.radio">
                                         <FormControlLabel control={<Radio />} label="The label" />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="radio.group"
                                         required
@@ -378,7 +402,7 @@ class App extends Component {
 
                             <h3>Material-UI-Pickers: DatePicker、TimePicker</h3>
                             <Grid container spacing={16}>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="datepicker"
                                         required
@@ -389,7 +413,7 @@ class App extends Component {
                                         <DatePicker label="DatePicker" autoOk clearable />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
                                         name="timepicker"
                                         required
@@ -400,11 +424,11 @@ class App extends Component {
                                         <TimePicker label="TimePicker" autoOk clearable />
                                     </FormControl>
                                 </Grid>
-                                <Grid item xs={12} md={4}>
+                                <Grid item xs={12} sm={4}>
                                     <FormControl
+                                        $defaultValue={moment()}
                                         name="datetimepicker"
                                         required
-                                        $defaultValue={null}
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -423,11 +447,13 @@ class App extends Component {
                             </Button>
                         </form>
                     </Grid>
-                    <Grid item lg xs={12}>
-                        <pre>{JSON.stringify(this.props.$formutil.$params, null, 2)}</pre>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <h3>$params</h3>
+                        <pre className={classes.overflow}>{JSON.stringify(this.props.$formutil.$params, null, 2)}</pre>
                     </Grid>
-                    <Grid item lg xs={12}>
-                        <pre>{JSON.stringify(this.props.$formutil.$errors, null, 2)}</pre>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <h3>$errors</h3>
+                        <pre className={classes.overflow}>{JSON.stringify(this.props.$formutil.$errors, null, 2)}</pre>
                     </Grid>
                 </Grid>
             </MuiPickersUtilsProvider>

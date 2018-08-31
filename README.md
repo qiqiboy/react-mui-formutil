@@ -339,11 +339,20 @@ class MyForm extends Component {
 
 ##### [`FormControlLabel`](https://material-ui.com/api/form-control-label/)
 
-`FormControlLabel`必须配合`Checkbox` `Radio` `Switch`其一一起用：
+`FormControlLabel`必须配合`Checkbox` `Radio` `Switch`其一一起用，并且要设置`component`属性来告诉`FormControl`其搭配的组件类型：
 
 ```javascript
-<FormControl name="agree">
+//component的值，必须为 control.xxx 类型
+<FormControl name="agree" component="control.Checkbox">
     <FormControlLabel control={<Checkbox />} />
+</FormControl>
+
+<FormControl name="agree" component="control.Radio">
+    <FormControlLabel control={<Radio />} />
+</FormControl>
+
+<FormControl name="agree" component="control.Switch">
+    <FormControlLabel control={<Switch />} />
 </FormControl>
 ```
 

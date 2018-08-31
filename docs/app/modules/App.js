@@ -89,7 +89,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.name"
                                         required
-                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -100,7 +99,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.password-input"
                                         required
-                                        component="textfield"
                                         $defaultValue="hello world"
                                         controlProps={{
                                             fullWidth: true
@@ -118,7 +116,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.readonly"
                                         required
-                                        component="textfield"
                                         $defaultValue="hello world"
                                         controlProps={{
                                             fullWidth: true
@@ -137,7 +134,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.multiline"
                                         required
-                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -148,7 +144,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.placeholder"
                                         required
-                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -164,7 +159,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.number"
                                         required
-                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -182,7 +176,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.search"
                                         required
-                                        component="textfield"
                                         controlProps={{
                                             fullWidth: true
                                         }}>
@@ -198,7 +191,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.select"
                                         required
-                                        component="textfield"
                                         $defaultValue="Apple"
                                         helperText="helper text"
                                         controlProps={{
@@ -217,7 +209,6 @@ class App extends Component {
                                     <FormControl
                                         name="textfield.nativeselect"
                                         required
-                                        component="textfield"
                                         $defaultValue="Apple"
                                         controlProps={{
                                             fullWidth: true
@@ -331,17 +322,12 @@ class App extends Component {
 
                             <Grid container spacing={16}>
                                 <Grid item xs={12} sm={4}>
-                                    <FormControl name="switch.single" required component="switch">
+                                    <FormControl name="switch.single" required>
                                         <Switch />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12} sm={4}>
-                                    <FormControl
-                                        name="switch.label"
-                                        required
-                                        checked="yes"
-                                        unchecked="no"
-                                        component="control.switch">
+                                    <FormControl name="switch.label" required checked="yes" unchecked="no">
                                         <FormControlLabel control={<Switch />} label="The label" />
                                     </FormControl>
                                 </Grid>
@@ -351,17 +337,12 @@ class App extends Component {
 
                             <Grid container spacing={16}>
                                 <Grid item xs={12} sm={4}>
-                                    <FormControl name="checkbox.single" required component="checkbox">
+                                    <FormControl name="checkbox.single" required>
                                         <Checkbox />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12} sm={4}>
-                                    <FormControl
-                                        name="checkbox.label"
-                                        required
-                                        checked="yes"
-                                        unchecked="no"
-                                        component="control.checkbox">
+                                    <FormControl name="checkbox.label" required checked="yes" unchecked="no">
                                         <FormControlLabel control={<Checkbox />} label="The label" />
                                     </FormControl>
                                 </Grid>
@@ -371,12 +352,12 @@ class App extends Component {
 
                             <Grid container spacing={16}>
                                 <Grid item xs={12} sm={4}>
-                                    <FormControl name="radio.single" required component="radio">
+                                    <FormControl name="radio.single" required>
                                         <Radio />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={12} sm={4}>
-                                    <FormControl name="radio.label" required checked="yes" component="control.radio">
+                                    <FormControl name="radio.label" required checked="yes">
                                         <FormControlLabel control={<Radio />} label="The label" />
                                     </FormControl>
                                 </Grid>

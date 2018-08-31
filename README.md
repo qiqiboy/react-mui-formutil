@@ -4,41 +4,38 @@
 
 Happy to use react-formutil in the project based on `Material-UI` ^\_^
 
-在 [Material-UI](https://github.com/mui-org/material-ui) 项目，结
-合[react-formutil](https://github.com/qiqiboy/react-formutil) 来快速构建表单。
+在 [Material-UI](https://github.com/mui-org/material-ui) 项目，结合[react-formutil](https://github.com/qiqiboy/react-formutil) 来快速构建表单。
 
 <!-- vim-markdown-toc GFM -->
 
-- [安装 Installation](#安装-installation)
-- [使用 Usage](#使用-usage)
-    + [`<FormControl />`](#formcontrol-)
-        * [`component`](#component)
-        * [`name`](#name)
-        * [`$defaultValue`](#defaultvalue)
-        * [`$validators`](#validators)
-        * [`controlProps`](#controlprops)
-        * [`label`](#label)
-        * [`helperText`](#helpertext)
-        * [`$parser`](#parser)
-        * [`$formatter`](#formatter)
-        * [`checked` `unchecked`](#checked-unchecked)
-        * [`validMessage`](#validmessage)
-        * [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
-    + [`支持的组件`](#支持的组件)
-        * [`TextField`](#textfield)
-        * [`Select`](#select)
-        * [`NativeSelect`](#nativeselect)
-        * [`Input`](#input)
-        * [`Checkbox`](#checkbox)
-        * [`Radio`](#radio)
-        * [`Switch`](#switch)
-        * [`FormControlLabel`](#formcontrollabel)
-        * [`DatePicker`](#datepicker)
-        * [`TimePicker`](#timepicker)
-        * [`DateTimePicker`](#datetimepicker)
-- [FAQ](#faq)
-    + [`给组件设置的 onChange、onFocus 等方法无效、不执行`](#给组件设置的-onchangeonfocus-等方法无效不执行)
-    + [`为什么有些搭配某些组件时必须给 FormControl 传递 component 参数呢？`](#为什么有些搭配某些组件时必须给-formcontrol-传递-component-参数呢)
+*   [安装 Installation](#安装-installation)
+*   [使用 Usage](#使用-usage)
+    *   [`<FormControl />`](#formcontrol-)
+        *   [`name`](#name)
+        *   [`$defaultValue`](#defaultvalue)
+        *   [`$validators`](#validators)
+        *   [`controlProps`](#controlprops)
+        *   [`label`](#label)
+        *   [`helperText`](#helpertext)
+        *   [`$parser`](#parser)
+        *   [`$formatter`](#formatter)
+        *   [`checked` `unchecked`](#checked-unchecked)
+        *   [`validMessage`](#validmessage)
+        *   [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
+    *   [`支持的组件`](#支持的组件)
+        *   [`TextField`](#textfield)
+        *   [`Select`](#select)
+        *   [`NativeSelect`](#nativeselect)
+        *   [`Input`](#input)
+        *   [`Checkbox`](#checkbox)
+        *   [`Radio`](#radio)
+        *   [`Switch`](#switch)
+        *   [`FormControlLabel`](#formcontrollabel)
+        *   [`DatePicker`](#datepicker)
+        *   [`TimePicker`](#timepicker)
+        *   [`DateTimePicker`](#datetimepicker)
+*   [FAQ](#faq)
+    *   [`给组件设置的 onChange、onFocus 等方法无效、不执行`](#给组件设置的-onchangeonfocus-等方法无效不执行)
 
 <!-- vim-markdown-toc -->
 
@@ -63,7 +60,7 @@ yarn install react-material-formutil
 ```javascript
 import React, { Component } from 'react';
 import { withForm, FormControl } from 'react-material-formutil';
-import { TextField } from '@material-ui/core'; // 导入mui的TextField组件
+import TextField from '@material-ui/core/TextField'; // 导入mui的TextField组件
 
 @withForm
 class MyForm extends Component {
@@ -89,8 +86,7 @@ class MyForm extends Component {
 }
 ```
 
-`FormControl`是 `react-material-formuitl` 新增加的组件，`withForm`是`react-formutil`的组件（没错，你可以直接
-从`react-antd-formutil`中导出`react-formutil`的组件啦）。
+`FormControl`是 `react-material-formuitl` 新增加的组件，`withForm`是`react-formutil`的组件（没错，你可以直接从`react-antd-formutil`中导出`react-formutil`的组件啦）。
 
 只需要将`material-ui`的交互组件，嵌套在`FormControl`下，即可实现自动的表单状态同步。
 
@@ -103,33 +99,13 @@ class MyForm extends Component {
 
 > `FormControl`下只允许放置一个表单组件，不允许多个。
 
-##### `component`
-
-`component`不是必须的，但是对于 `Checkbox` `Radio` `Switch` `TextField` 这四种组件，必须通过`component`传递其组件名，以告诉`FormControl`需要特殊处理。
-
-```javascript
-<FormControl name="name" component="TextField">
-    <TextField />
-</FormControl>
-
-<FormControl name="agree" component="Switch">
-    <Switch />
-</FormControl>
-
-<FormControl name="agree" component="Checkbox">
-    <Checkbox />
-</FormControl>
-```
-
 ##### `name`
 
-设置输入项的 name 值，表单项将会以 name 作为 key 收集到 formutil 的状态中。支持嵌套语法 _（同`react-formutil`的`Field`同
-名参数，可以参考 [name](https://github.com/qiqiboy/react-formutil#name)）_
+设置输入项的 name 值，表单项将会以 name 作为 key 收集到 formutil 的状态中。支持嵌套语法 _（同`react-formutil`的`Field`同名参数，可以参考 [name](https://github.com/qiqiboy/react-formutil#name)）_
 
 ##### `$defaultValue`
 
-设置该表单项的默认值 _（同`react-formutil`的`Field`同名参数，可以参
-考[$defaultvalue](https://github.com/qiqiboy/react-formutil#defaultvalue)）_
+设置该表单项的默认值 _（同`react-formutil`的`Field`同名参数，可以参考[$defaultvalue](https://github.com/qiqiboy/react-formutil#defaultvalue)）_
 
 ##### `$validators`
 
@@ -138,19 +114,18 @@ class MyForm extends Component {
 
 > 同 react-formutil 的 EasyField，FormControl 也内置了同样的校验规则：
 
-> -   `required` 必填 `required`
-> -   `maxLength` 。最大输入长度，有效输入时才会校验 `maxLength="100"`
-> -   `minLength` 最小输入长度，有效输入时才会校验 `minLength="10"`
-> -   `max` 最大输入数值，仅支持 Number 比较。有效输入时才会校验 `max="100"`
-> -   `min` 最小输入数值，仅支持 Number 比较。有效输入时才会校验 `min="10"`
-> -   `pattern` 正则匹配。有效输入时才会校验 `pattern={/^\d+$/}`
-> -   `enum` 枚举值检测。有效输入时才会校验 `enum={[1,2,3]}`
-> -   `checker` 自定义校验函数。`checker={value => value > 10 && value < 100 || ' 输入比如大于 10 小与 100'}`
+> *   `required` 必填 `required`
+> *   `maxLength` 。最大输入长度，有效输入时才会校验 `maxLength="100"`
+> *   `minLength` 最小输入长度，有效输入时才会校验 `minLength="10"`
+> *   `max` 最大输入数值，仅支持 Number 比较。有效输入时才会校验 `max="100"`
+> *   `min` 最小输入数值，仅支持 Number 比较。有效输入时才会校验 `min="10"`
+> *   `pattern` 正则匹配。有效输入时才会校验 `pattern={/^\d+$/}`
+> *   `enum` 枚举值检测。有效输入时才会校验 `enum={[1,2,3]}`
+> *   `checker` 自定义校验函数。`checker={value => value > 10 && value < 100 || ' 输入比如大于 10 小与 100'}`
 
 注：校验属性的值为 `null` 时表示不进行该校验
 
-内置的校验规则无需再次声明，除非规则不符合预期，需要替换，则可以通过`$validators` 传递同名校验方法即可替换默认的。另外，
-内置的校验规则，如果校验不通过，会尝试去 `validMessage` 匹配错误信息。
+内置的校验规则无需再次声明，除非规则不符合预期，需要替换，则可以通过`$validators` 传递同名校验方法即可替换默认的。另外，内置的校验规则，如果校验不通过，会尝试去 `validMessage` 匹配错误信息。
 
 ##### `controlProps`
 
@@ -263,10 +238,8 @@ class MyForm extends Component {
 
 ##### [`TextField`](https://material-ui.com/api/text-field/)
 
-**注意**：`component="TextField"` 必须不可少。
-
 ```javascript
-<FormControl name="name" component="TextField">
+<FormControl name="name">
     <TextField label="Name" margin="normal" />
 </FormControl>
 ```
@@ -309,49 +282,42 @@ class MyForm extends Component {
 
 ##### [`Checkbox`](https://material-ui.com/api/checkbox/)
 
-**注意**：`component="Checkbox"` 必须不可少。
-
 ```javascript
-<FormControl name="agree" component="Checkbox">
+<FormControl name="agree">
     <Checkbox />}
 </FormControl>
 ```
 
 ##### [`Radio`](https://material-ui.com/api/radio/)
 
-**注意**：`component="Radio"` 必须不可少。
-
 ```javascript
-<FormControl name="agree" component="Radio">
+<FormControl name="agree">
     <Radio />}
 </FormControl>
 ```
 
 ##### [`Switch`](https://material-ui.com/api/switch/)
 
-**注意**：`component="Switch"` 必须不可少。
-
 ```javascript
-<FormControl name="agree" component="Switch">
+<FormControl name="agree">
     <Switch />}
 </FormControl>
 ```
 
 ##### [`FormControlLabel`](https://material-ui.com/api/form-control-label/)
 
-`FormControlLabel`必须配合`Checkbox` `Radio` `Switch`其一一起用，并且要设置`component`属性来告诉`FormControl`其搭配的组件类型：
+`FormControlLabel`必须配合`Checkbox` `Radio` `Switch`其一一起用：
 
 ```javascript
-//component的值，必须为 control.xxx 类型
-<FormControl name="agree" component="control.Checkbox">
+<FormControl name="agree">
     <FormControlLabel control={<Checkbox />} />
 </FormControl>
 
-<FormControl name="agree" component="control.Radio">
+<FormControl name="agree">
     <FormControlLabel control={<Radio />} />
 </FormControl>
 
-<FormControl name="agree" component="control.Switch">
+<FormControl name="agree">
     <FormControlLabel control={<Switch />} />
 </FormControl>
 ```
@@ -380,9 +346,3 @@ class MyForm extends Component {
     <Input />
 </FormControl>
 ```
-
-#### `为什么有些搭配某些组件时必须给 FormControl 传递 component 参数呢？`
-
-由于`material-ui`库的设计，其一些组件使用了 `withStyles` 高阶组件包装，导致代码压缩后无法区别到底是哪个组件类型，也就无法针对这些组件做特殊状态同步处理。
-
-所以对于 `Checkbox` `Radio` `Switch` `TextField` 这四种需要特殊处理的组件，必须传递 `component` 参数，以确保正确运行。

@@ -6,7 +6,6 @@
   "vendor": [
     "react",
     "react-dom",
-    "@material-ui/core",
     "react-formutil"
   ],
   "noRewrite": true,

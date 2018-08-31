@@ -4,29 +4,50 @@ import { EasyField } from 'react-formutil';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import TextField from '@material-ui/core/TextField';
+import Switch from '@material-ui/core/Switch';
+import Radio from '@material-ui/core/Radio';
+import Checkbox from '@material-ui/core/Checkbox';
 
-const _TextField = 'textfield';
-const _Switch = 'switch';
-const _Checkbox = 'checkbox';
-const _Radio = 'radio';
+const isUglify = TextField.name !== 'TextField';
+
+const _TextField = isUglify ? TextField : 'TextField';
+const _Switch = isUglify ? Switch : 'MuiSwitch';
+const _Checkbox = isUglify ? Checkbox : 'MuiCheckbox';
+const _Radio = isUglify ? Radio : 'MuiRadio';
+const _FormControlLabel = isUglify ? FormControlLabel : 'MuiFormControlLabel';
+
+function getChildComponent(children) {
+    if (children && typeof children.type === 'function') {
+        const func = children.type;
+
+        if (isUglify) {
+            return func;
+        }
+
+        const oname = func.options && func.options.name;
+
+        if (oname) {
+            return oname;
+        }
+
+        return func.displayName || func.name;
+    }
+}
 
 class FormItem extends Component {
     static propTypes = {
         children: PropTypes.element.isRequired,
-        component: PropTypes.string.isRequired,
         label: PropTypes.any,
         helperText: PropTypes.any,
         controlProps: PropTypes.object //传递给FormControl组件的属性
         //$parser $formatter checked unchecked $validators validMessage等传递给 EasyField 组件的额外参数
     };
 
-    static defaultProps = {
-        component: 'common'
-    };
-
     render() {
         const props = this.props;
-        let { children, component, label, helperText, controlProps, ...fieldProps } = props;
+        let { children, label, helperText, controlProps, ...fieldProps } = props;
 
         if (label && !isValidElement(label)) {
             label = <InputLabel>{label}</InputLabel>;
@@ -36,11 +57,11 @@ class FormItem extends Component {
             helperText = <FormHelperText>{helperText}</FormHelperText>;
         }
 
-        let [, childComponent] = component.toLowerCase().split('.');
+        let component = getChildComponent(children);
         let injectChildProps = true;
 
-        if (childComponent) {
-            component = childComponent;
+        if (component === _FormControlLabel) {
+            component = getChildComponent(children.props.control);
             injectChildProps = false;
         }
 

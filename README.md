@@ -86,7 +86,7 @@ class MyForm extends Component {
 }
 ```
 
-`FormControl`是 `react-material-formuitl` 新增加的组件，`withForm`是`react-formutil`的组件（没错，你可以直接从`react-antd-formutil`中导出`react-formutil`的组件啦）。
+`FormControl`是 `react-material-formuitl` 新增加的组件，`withForm`是`react-formutil`的组件（没错，你可以直接从`react-material-formutil`中导出`react-formutil`的组件啦）。
 
 只需要将`material-ui`的交互组件，嵌套在`FormControl`下，即可实现自动的表单状态同步。
 
@@ -222,7 +222,7 @@ class MyForm extends Component {
 
 ##### `valuePropName` `changePropName` `focusPropName` `blurPropName`
 
-该四个参数可以用来设置绑定到组件上的值或者值变动、是否聚焦等事件回调。该项一般不需要设置，`FormControl` 已经针对 `antd`
+该四个参数可以用来设置绑定到组件上的值或者值变动、是否聚焦等事件回调。该项一般不需要设置，`FormControl` 已经针对 `material-ui`
 中的所有 `data-entry` 型组件做了兼容处理。
 
 对于一些特殊场景，例如不需要同步 `focus`、`blur`，则可以通过将该值设为`{null}`来禁用：
@@ -338,7 +338,7 @@ class MyForm extends Component {
 
 #### `给组件设置的 onChange、onFocus 等方法无效、不执行`
 
-`FormControl`会覆盖掉直接添加到 antd 组件上的`onFocus` `onBlur` `onChange`方法，所以如果需要这三个事件方法，需要添加到
+`FormControl`会覆盖掉直接添加到 `material-ui` 组件上的`onFocus` `onBlur` `onChange`方法，所以如果需要这三个事件方法，需要添加到
 `FormControl`上：
 
 ```javascript

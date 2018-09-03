@@ -6,36 +6,42 @@ Happy to use react-formutil in the project based on `Material-UI` ^\_^
 
 在 [Material-UI](https://github.com/mui-org/material-ui) 项目，结合[react-formutil](https://github.com/qiqiboy/react-formutil) 来快速构建表单。
 
+> **如果你在使用其他 react-组件库，可以查阅：**
+>
+> 1. ant-design [`react-antd-formutil`](https://github.com/qiqiboy/react-antd-formutil) [![npm](https://img.shields.io/npm/v/react-antd-formutil.svg?style=flat)](https://npm.im/react-antd-formutil)
+> 1. react-bootstrap [`react-bootstrap-formutil`](https://github.com/qiqiboy/react-bootstrap-formutil) [![npm](https://img.shields.io/npm/v/react-bootstrap-formutil.svg?style=flat)](https://npm.im/react-bootstrap-formutil)
+> 1. react-md [`react-md-formutil`](https://github.com/qiqiboy/react-md-formutil) [![npm](https://img.shields.io/npm/v/react-md-formutil.svg?style=flat)](https://npm.im/react-md-formutil)
+
 <!-- vim-markdown-toc GFM -->
 
-*   [安装 Installation](#安装-installation)
-*   [使用 Usage](#使用-usage)
-    *   [`<FormControl />`](#formcontrol-)
-        *   [`name`](#name)
-        *   [`$defaultValue`](#defaultvalue)
-        *   [`$validators`](#validators)
-        *   [`controlProps`](#controlprops)
-        *   [`label`](#label)
-        *   [`helperText`](#helpertext)
-        *   [`$parser`](#parser)
-        *   [`$formatter`](#formatter)
-        *   [`checked` `unchecked`](#checked-unchecked)
-        *   [`validMessage`](#validmessage)
-        *   [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
-    *   [`支持的组件`](#支持的组件)
-        *   [`TextField`](#textfield)
-        *   [`Select`](#select)
-        *   [`NativeSelect`](#nativeselect)
-        *   [`Input`](#input)
-        *   [`Checkbox`](#checkbox)
-        *   [`Radio`](#radio)
-        *   [`Switch`](#switch)
-        *   [`FormControlLabel`](#formcontrollabel)
-        *   [`DatePicker`](#datepicker)
-        *   [`TimePicker`](#timepicker)
-        *   [`DateTimePicker`](#datetimepicker)
-*   [FAQ](#faq)
-    *   [`给组件设置的 onChange、onFocus 等方法无效、不执行`](#给组件设置的-onchangeonfocus-等方法无效不执行)
+- [安装 Installation](#安装-installation)
+- [使用 Usage](#使用-usage)
+    + [`<FormControl />`](#formcontrol-)
+        * [`name`](#name)
+        * [`$defaultValue`](#defaultvalue)
+        * [`$validators`](#validators)
+        * [`controlProps`](#controlprops)
+        * [`label`](#label)
+        * [`helperText`](#helpertext)
+        * [`$parser`](#parser)
+        * [`$formatter`](#formatter)
+        * [`checked` `unchecked`](#checked-unchecked)
+        * [`validMessage`](#validmessage)
+        * [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
+    + [`支持的组件`](#支持的组件)
+        * [`TextField`](#textfield)
+        * [`Select`](#select)
+        * [`NativeSelect`](#nativeselect)
+        * [`Input`](#input)
+        * [`Checkbox`](#checkbox)
+        * [`Radio`](#radio)
+        * [`Switch`](#switch)
+        * [`FormControlLabel`](#formcontrollabel)
+        * [`DatePicker`](#datepicker)
+        * [`TimePicker`](#timepicker)
+        * [`DateTimePicker`](#datetimepicker)
+- [FAQ](#faq)
+    + [`给组件设置的 onChange、onFocus 等方法无效、不执行`](#给组件设置的-onchangeonfocus-等方法无效不执行)
 
 <!-- vim-markdown-toc -->
 
@@ -114,14 +120,14 @@ class MyForm extends Component {
 
 > 同 react-formutil 的 EasyField，FormControl 也内置了同样的校验规则：
 
-> *   `required` 必填 `required`
-> *   `maxLength` 。最大输入长度，有效输入时才会校验 `maxLength="100"`
-> *   `minLength` 最小输入长度，有效输入时才会校验 `minLength="10"`
-> *   `max` 最大输入数值，仅支持 Number 比较。有效输入时才会校验 `max="100"`
-> *   `min` 最小输入数值，仅支持 Number 比较。有效输入时才会校验 `min="10"`
-> *   `pattern` 正则匹配。有效输入时才会校验 `pattern={/^\d+$/}`
-> *   `enum` 枚举值检测。有效输入时才会校验 `enum={[1,2,3]}`
-> *   `checker` 自定义校验函数。`checker={value => value > 10 && value < 100 || ' 输入比如大于 10 小与 100'}`
+> -   `required` 必填 `required`
+> -   `maxLength` 。最大输入长度，有效输入时才会校验 `maxLength="100"`
+> -   `minLength` 最小输入长度，有效输入时才会校验 `minLength="10"`
+> -   `max` 最大输入数值，仅支持 Number 比较。有效输入时才会校验 `max="100"`
+> -   `min` 最小输入数值，仅支持 Number 比较。有效输入时才会校验 `min="10"`
+> -   `pattern` 正则匹配。有效输入时才会校验 `pattern={/^\d+$/}`
+> -   `enum` 枚举值检测。有效输入时才会校验 `enum={[1,2,3]}`
+> -   `checker` 自定义校验函数。`checker={value => value > 10 && value < 100 || ' 输入比如大于 10 小与 100'}`
 
 注：校验属性的值为 `null` 时表示不进行该校验
 

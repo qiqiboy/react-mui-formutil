@@ -22,11 +22,8 @@ import {
 } from '@material-ui/core';
 
 import MaskedInput from 'react-text-mask';
-import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
-import MomentUtils from 'material-ui-pickers/utils/moment-utils';
-import TimePicker from 'material-ui-pickers/TimePicker';
-import DatePicker from 'material-ui-pickers/DatePicker';
-import DateTimePicker from 'material-ui-pickers/DateTimePicker';
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider, TimePicker, DatePicker, DateTimePicker } from 'material-ui-pickers';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
 

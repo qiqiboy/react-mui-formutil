@@ -28,6 +28,8 @@ Happy to use react-formutil in the project based on `Material-UI` ^\_^
         * [`checked` `unchecked`](#checked-unchecked)
         * [`validMessage`](#validmessage)
         * [`valuePropName` `changePropName` `focusPropName` `blurPropName`](#valuepropname-changepropname-focuspropname-blurpropname)
+        * [`errorLevel`](#errorlevel)
+    + [`setErrorLevel(level)`](#seterrorlevellevel)
     + [`支持的组件`](#支持的组件)
         * [`TextField`](#textfield)
         * [`Select`](#select)
@@ -238,6 +240,26 @@ class MyForm extends Component {
 <FormControl focusPropName={null} blurPropName={null} name="username">
     <Input />
 </FormControl>
+```
+
+##### `errorLevel`
+
+用来覆盖全局的 errorLevel 设置。参考[`setErrorLevel(level)`](#seterrorlevellevel)
+
+#### `setErrorLevel(level)`
+
+`setErrorLevel` 该方法可以用来全局设置错误信息何时出现，有三个级别可以设置：
+
+*   `0` 当`$dirty` `$touched` `invalid` 都为 true 时
+*   `1` 当`$dirty` `invalid` 都为 true 时
+*   `2` 当`invalid` 为 true 时
+
+默认值为 `1`
+
+```javascript
+import { setErrorLevel } from 'react-antd-formutil';
+
+setErrorLevel(0);
 ```
 
 #### `支持的组件`

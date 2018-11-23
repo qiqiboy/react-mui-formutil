@@ -10,6 +10,17 @@ import Switch from '@material-ui/core/Switch';
 import Radio from '@material-ui/core/Radio';
 import Checkbox from '@material-ui/core/Checkbox';
 
+let errorLevelGlobal = 1;
+
+/**
+ * 0 dirty & invalid & touched
+ * 1 dirty & invalid
+ * 2 invalid
+ */
+export const setErrorLevel = function(level) {
+    errorLevelGlobal = level;
+};
+
 const isUglify = TextField.name !== 'TextField';
 
 const _TextField = isUglify ? TextField : 'TextField';
@@ -21,6 +32,10 @@ const _FormControlLabel = isUglify ? FormControlLabel : 'MuiFormControlLabel';
 function getChildComponent(children) {
     if (children && typeof children.type === 'function') {
         const func = children.type;
+
+        if ('formutilType' in func) {
+            return func.formutilType;
+        }
 
         if (isUglify) {
             return func;
@@ -41,13 +56,14 @@ class FormItem extends Component {
         children: PropTypes.element.isRequired,
         label: PropTypes.any,
         helperText: PropTypes.any,
-        controlProps: PropTypes.object //传递给FormControl组件的属性
+        controlProps: PropTypes.object, //传递给FormControl组件的属性
+        errorLevel: PropTypes.number
         //$parser $formatter checked unchecked $validators validMessage等传递给 EasyField 组件的额外参数
     };
 
     render() {
         const props = this.props;
-        let { children, label, helperText, controlProps, ...fieldProps } = props;
+        let { children, label, helperText, controlProps, errorLevel = errorLevelGlobal, ...fieldProps } = props;
 
         if (label && !isValidElement(label)) {
             label = <InputLabel>{label}</InputLabel>;
@@ -72,6 +88,14 @@ class FormItem extends Component {
                 fieldProps.__TYPE__ = 'checked';
                 break;
 
+            case 'checked':
+            case 'array':
+            case 'object':
+            case 'number':
+            case 'empty':
+                fieldProps.__TYPE__ = component;
+                break;
+
             default:
                 break;
         }
@@ -81,7 +105,7 @@ class FormItem extends Component {
                 {...fieldProps}
                 passUtil="$fieldutil"
                 render={({ $fieldutil, ...restProps }) => {
-                    const { $invalid, $dirty, $error } = $fieldutil;
+                    const { $invalid, $dirty, $touched, $getFirstError } = $fieldutil;
                     const {
                         valuePropName = 'value',
                         changePropName = 'onChange',
@@ -98,6 +122,7 @@ class FormItem extends Component {
                         case _Switch:
                         case _Checkbox:
                         case _Radio:
+                        case 'checked':
                             const { checked = true, unchecked = false } = props;
                             childProps = {
                                 checked: value === checked,
@@ -128,6 +153,20 @@ class FormItem extends Component {
                         [blurPropName]: onBlur
                     });
 
+                    let hasError;
+
+                    switch (errorLevel) {
+                        case 0:
+                            hasError = $invalid && $dirty & $touched;
+                            break;
+                        case 1:
+                            hasError = $invalid && $dirty;
+                            break;
+                        default:
+                            hasError = $invalid;
+                            break;
+                    }
+
                     if (component === _TextField) {
                         if (label) {
                             childProps.label = props.label;
@@ -137,9 +176,9 @@ class FormItem extends Component {
                             childProps.helperText = props.helperText;
                         }
 
-                        if ($invalid && $dirty) {
+                        if (hasError) {
                             childProps.error = true;
-                            childProps.helperText = Object.values($error)[0];
+                            childProps.helperText = $getFirstError();
                         }
 
                         return cloneElement(children, {
@@ -149,14 +188,10 @@ class FormItem extends Component {
                     }
 
                     return (
-                        <FormControl {...controlProps} error={$invalid && $dirty}>
+                        <FormControl {...controlProps} error={hasError}>
                             {label}
                             {injectChildProps ? cloneElement(children, childProps) : children}
-                            {$invalid && $dirty ? (
-                                <FormHelperText>{Object.values($error)[0]}</FormHelperText>
-                            ) : (
-                                helperText
-                            )}
+                            {$invalid && $dirty ? <FormHelperText>{$getFirstError()}</FormHelperText> : helperText}
                         </FormControl>
                     );
                 }}

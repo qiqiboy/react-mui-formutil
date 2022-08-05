@@ -1,14 +1,14 @@
-import React, { Component, cloneElement, isValidElement } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component, cloneElement, isValidElement } from 'react';
 import { EasyField } from 'react-formutil';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import TextField from '@material-ui/core/TextField';
-import Switch from '@material-ui/core/Switch';
-import Radio from '@material-ui/core/Radio';
 import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from '@material-ui/core/InputLabel';
+import Radio from '@material-ui/core/Radio';
+import Switch from '@material-ui/core/Switch';
+import TextField from '@material-ui/core/TextField';
 
 let errorLevelGlobal = 1;
 
@@ -17,7 +17,7 @@ let errorLevelGlobal = 1;
  * 1 dirty & invalid
  * 2 invalid
  */
-export const setErrorLevel = function(level) {
+export const setErrorLevel = function (level) {
     errorLevelGlobal = level;
 };
 
@@ -118,16 +118,19 @@ class FormItem extends Component {
                     const value = restProps[valuePropName];
 
                     let childProps;
+
                     switch (component) {
                         case _Switch:
                         case _Checkbox:
                         case _Radio:
                         case 'checked':
                             const { checked = true, unchecked = false } = props;
+
                             childProps = {
                                 checked: value === checked,
                                 onChange: ev => {
                                     const newValue = ev && ev.target ? ev.target.checked : ev;
+
                                     onChange(newValue ? checked : unchecked, ev);
                                 }
                             };
@@ -145,6 +148,7 @@ class FormItem extends Component {
                                 [changePropName]: onChange,
                                 [valuePropName]: value
                             };
+
                             break;
                     }
 

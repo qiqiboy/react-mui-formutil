@@ -4,6 +4,8 @@
 
 Happy to use react-formutil in the project based on `Material-UI` ^\_^
 
+> 已迁移至 [`react-mui-formmutil`](https://github.com/qiqiboy/react-mui-formutil)，支持最新的`@mui/material` 5.x版本。
+
 在 [Material-UI](https://github.com/mui-org/material-ui) 项目，结合[react-formutil](https://github.com/qiqiboy/react-formutil) 来快速构建表单。
 
 > **如果你在使用其他 react-组件库，可以查阅：**

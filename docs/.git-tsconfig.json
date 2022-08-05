@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.json","include":["*.d.ts","app/utils/i18n/*","docs/global.d.ts"]}

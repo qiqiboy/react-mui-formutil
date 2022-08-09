@@ -28,7 +28,7 @@ const exportName = pkg.exportName || pkg.name.split('/').slice(-1)[0];
 
 function createConfig(env, module) {
     const isProd = env === 'production';
-    const shouldPreserveCss = module === 'esm';
+    const shouldPreserveCss = false; // module === 'esm';
 
     // for umd globals
     const globals = {

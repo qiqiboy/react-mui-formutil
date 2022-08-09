@@ -196,6 +196,24 @@ module.exports = {
                     {
                         name: 'moment',
                         message: 'Please use dayjs instead.'
+                    },
+                    '@material-ui/*',
+                    '@mui/base',
+                    '@mui/system',
+                    '@mui/styles'
+                ],
+                patterns: [
+                    {
+                        group: ['@mui/material/*'],
+                        message: 'Plaease do not use pathed-import for @mui/material'
+                    },
+                    {
+                        group: ['@mui/icons-material/*'],
+                        message: 'Plaease do not use pathed-import for @mui/icons-material'
+                    },
+                    {
+                        group: ['@mui/x-date-pickers/*'],
+                        message: 'Plaease do not use pathed-import for @mui/x-date-pickers'
                     }
                 ]
             }

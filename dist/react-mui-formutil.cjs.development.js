@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var reactFormutil = require('react-formutil');
-var _objectSpread = require('@babel/runtime/helpers/objectSpread2');
 var _defineProperty = require('@babel/runtime/helpers/defineProperty');
+var _objectSpread = require('@babel/runtime/helpers/objectSpread2');
 var _toPropertyKey = require('@babel/runtime/helpers/toPropertyKey');
 var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
 var _classCallCheck = require('@babel/runtime/helpers/classCallCheck');
@@ -18,8 +18,8 @@ var isEqual = require('react-fast-compare');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var _objectSpread__default = /*#__PURE__*/_interopDefaultLegacy(_objectSpread);
 var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty);
+var _objectSpread__default = /*#__PURE__*/_interopDefaultLegacy(_objectSpread);
 var _toPropertyKey__default = /*#__PURE__*/_interopDefaultLegacy(_toPropertyKey);
 var _objectWithoutProperties__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);
 var _classCallCheck__default = /*#__PURE__*/_interopDefaultLegacy(_classCallCheck);
@@ -317,7 +317,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/React__default["default"].createElement(reactFormutil.EasyField, Object.assign({}, fieldProps, {
         passUtil: "$fieldutil",
         render: function render($handleProps) {
-          var _this2$compositionVal, _childProps, _Object$assign;
+          var _this2$compositionVal, _objectSpread2, _Object$assign;
 
           var _props$valuePropName = props.valuePropName,
               valuePropName = _props$valuePropName === void 0 ? 'value' : _props$valuePropName,
@@ -364,7 +364,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
               var fixedOnChange = specialValueComponents.includes(component) ? function (ev, value) {
                 _onChange(value);
               } : _onChange;
-              childProps = (_childProps = {
+              var compositionProps = {
                 onCompositionEnd: function onCompositionEnd(ev) {
                   _this2.isComposing = false;
                   delete _this2.compositionValue;
@@ -374,7 +374,8 @@ var _FormControl = /*#__PURE__*/function (_Component) {
                 onCompositionStart: function onCompositionStart() {
                   return _this2.isComposing = true;
                 }
-              }, _defineProperty__default["default"](_childProps, changePropName, function (ev) {
+              };
+              childProps = _objectSpread__default["default"](_objectSpread__default["default"]({}, specialValueComponents.includes(component) ? {} : compositionProps), {}, (_objectSpread2 = {}, _defineProperty__default["default"](_objectSpread2, changePropName, function (ev) {
                 if (_this2.isComposing) {
                   _this2.compositionValue = ev.target[valuePropName];
 
@@ -386,7 +387,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
 
                   fixedOnChange.apply(void 0, [ev].concat(rest));
                 }
-              }), _defineProperty__default["default"](_childProps, valuePropName, (_this2$compositionVal = _this2.compositionValue) !== null && _this2$compositionVal !== void 0 ? _this2$compositionVal : value), _defineProperty__default["default"](_childProps, blurPropName, function () {
+              }), _defineProperty__default["default"](_objectSpread2, valuePropName, (_this2$compositionVal = _this2.compositionValue) !== null && _this2$compositionVal !== void 0 ? _this2$compositionVal : value), _defineProperty__default["default"](_objectSpread2, blurPropName, function () {
                 if (_this2.isComposing) {
                   _this2.isComposing = false;
                   delete _this2.compositionValue;
@@ -395,7 +396,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
                 }
 
                 return onBlur.apply(void 0, arguments);
-              }), _childProps);
+              }), _objectSpread2));
               break;
           }
 

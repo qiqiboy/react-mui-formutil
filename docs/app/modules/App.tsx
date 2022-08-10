@@ -42,8 +42,7 @@ import { DatePicker, DateTimePicker, LocalizationProvider } from '@mui/x-date-pi
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'; // eslint-disable-line
 import React, { FormEvent, useState } from 'react';
 import { $Formutil, withForm } from 'react-formutil';
-import FormControl from 'app/../../src/FormControl';
-import CheckboxGroup from '../../../src/CheckboxGroup';
+import { CheckboxGroup, FormControl } from 'app/../../src';
 import { top100Films } from './config';
 
 interface AppProps {
@@ -234,6 +233,13 @@ const App: React.FC<AppProps> = props => {
                                                 renderInput={params => <TextField {...params} fullWidth />}
                                             />
                                         </FormControl>
+                                        <Autocomplete
+                                                multiple
+                                                disablePortal
+                                            onChange={(...a) => console.log(a)}
+                                                options={top100Films}
+                                                renderInput={params => <TextField {...params} fullWidth />}
+                                            />
                                         <FormControl
                                             name="autocomplete.multiple"
                                             required

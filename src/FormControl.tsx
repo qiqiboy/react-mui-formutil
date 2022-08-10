@@ -294,14 +294,17 @@ class _FormControl extends Component<FormControlComponentProps & OtherKeys> {
                                       onChange(value);
                                   }
                                 : onChange;
-
-                            childProps = {
+                            const compositionProps = {
                                 onCompositionEnd: ev => {
                                     this.isComposing = false;
                                     delete this.compositionValue;
                                     onChange(ev);
                                 },
-                                onCompositionStart: () => (this.isComposing = true),
+                                onCompositionStart: () => (this.isComposing = true)
+                            };
+
+                            childProps = {
+                                ...(specialValueComponents.includes(component) ? {} : compositionProps),
                                 [changePropName]: (ev, ...rest) => {
                                     if (this.isComposing) {
                                         this.compositionValue = ev.target[valuePropName];

@@ -1,7 +1,7 @@
 import { EasyField } from 'react-formutil';
 export * from 'react-formutil';
-import _objectSpread from '@babel/runtime/helpers/esm/objectSpread2';
 import _defineProperty from '@babel/runtime/helpers/esm/defineProperty';
+import _objectSpread from '@babel/runtime/helpers/esm/objectSpread2';
 import _toPropertyKey from '@babel/runtime/helpers/esm/toPropertyKey';
 import _objectWithoutProperties from '@babel/runtime/helpers/esm/objectWithoutProperties';
 import _classCallCheck from '@babel/runtime/helpers/esm/classCallCheck';
@@ -300,7 +300,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/React.createElement(EasyField, Object.assign({}, fieldProps, {
         passUtil: "$fieldutil",
         render: function render($handleProps) {
-          var _this2$compositionVal, _childProps, _Object$assign;
+          var _this2$compositionVal, _objectSpread2, _Object$assign;
 
           var _props$valuePropName = props.valuePropName,
               valuePropName = _props$valuePropName === void 0 ? 'value' : _props$valuePropName,
@@ -347,7 +347,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
               var fixedOnChange = specialValueComponents.includes(component) ? function (ev, value) {
                 _onChange(value);
               } : _onChange;
-              childProps = (_childProps = {
+              var compositionProps = {
                 onCompositionEnd: function onCompositionEnd(ev) {
                   _this2.isComposing = false;
                   delete _this2.compositionValue;
@@ -357,7 +357,8 @@ var _FormControl = /*#__PURE__*/function (_Component) {
                 onCompositionStart: function onCompositionStart() {
                   return _this2.isComposing = true;
                 }
-              }, _defineProperty(_childProps, changePropName, function (ev) {
+              };
+              childProps = _objectSpread(_objectSpread({}, specialValueComponents.includes(component) ? {} : compositionProps), {}, (_objectSpread2 = {}, _defineProperty(_objectSpread2, changePropName, function (ev) {
                 if (_this2.isComposing) {
                   _this2.compositionValue = ev.target[valuePropName];
 
@@ -369,7 +370,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
 
                   fixedOnChange.apply(void 0, [ev].concat(rest));
                 }
-              }), _defineProperty(_childProps, valuePropName, (_this2$compositionVal = _this2.compositionValue) !== null && _this2$compositionVal !== void 0 ? _this2$compositionVal : value), _defineProperty(_childProps, blurPropName, function () {
+              }), _defineProperty(_objectSpread2, valuePropName, (_this2$compositionVal = _this2.compositionValue) !== null && _this2$compositionVal !== void 0 ? _this2$compositionVal : value), _defineProperty(_objectSpread2, blurPropName, function () {
                 if (_this2.isComposing) {
                   _this2.isComposing = false;
                   delete _this2.compositionValue;
@@ -378,7 +379,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
                 }
 
                 return onBlur.apply(void 0, arguments);
-              }), _childProps);
+              }), _objectSpread2));
               break;
           }
 

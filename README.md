@@ -1,4 +1,4 @@
-# react-material-formutil
+# react-mui-formutil
 
 [![npm](https://img.shields.io/npm/v/react-mui-formutil.svg?style=flat)](https://npm.im/react-mui-formutil)
 [![peerDependencies](https://img.shields.io/npm/dependency-version/react-mui-formutil/peer/react.svg?color=yellowgreen)](https://reactjs.org)

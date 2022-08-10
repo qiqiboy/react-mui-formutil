@@ -17,7 +17,7 @@ export interface FormControlComponentProps<T = any, P = {}, Fields = {}, WeakFie
     noStyle?: boolean;
     children: React.ReactElement<any> | (($fieldHandler: Partial<$FieldHandler<T>> & OtherKeys) => React.ReactNode);
 }
-declare class FormItem extends Component<FormControlComponentProps & OtherKeys> {
+declare class _FormControl extends Component<FormControlComponentProps & OtherKeys> {
     static propTypes: {
         children(props: any, ...args: any[]): Error | null;
         label: PropTypes.Requireable<any>;
@@ -46,4 +46,4 @@ declare class FormItem extends Component<FormControlComponentProps & OtherKeys> 
     componentWillUnmount(): void;
     render(): JSX.Element;
 }
-export default FormItem;
+export { _FormControl as FormControl };

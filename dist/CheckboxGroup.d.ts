@@ -9,7 +9,7 @@ export interface CheckboxGroupProps extends Omit<FormGroupProps, 'onChange'> {
     onBlur?(): void;
     children: React.ReactElement | React.ReactElement[];
 }
-declare class CheckboxGroup extends React.Component<CheckboxGroupProps> {
+export declare class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     static formutilType: string;
     static propTypes: {
         onChange: PropTypes.Requireable<(...args: any[]) => any>;
@@ -19,4 +19,3 @@ declare class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     };
     render(): JSX.Element;
 }
-export default CheckboxGroup;

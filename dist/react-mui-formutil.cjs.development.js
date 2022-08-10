@@ -31,7 +31,6 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var isEqual__default = /*#__PURE__*/_interopDefaultLegacy(isEqual);
 
 var _excluded$1 = ["children", "name", "onChange", "value", "onFocus", "onBlur"];
-
 var CheckboxGroup = /*#__PURE__*/function (_React$Component) {
   _inherits__default["default"](CheckboxGroup, _React$Component);
 
@@ -80,7 +79,6 @@ var CheckboxGroup = /*#__PURE__*/function (_React$Component) {
 
   return CheckboxGroup;
 }(React__default["default"].Component);
-
 CheckboxGroup.formutilType = 'array';
 CheckboxGroup.propTypes = {
   onChange: PropTypes__default["default"].func,
@@ -88,7 +86,6 @@ CheckboxGroup.propTypes = {
   onBlur: PropTypes__default["default"].func,
   value: PropTypes__default["default"].array
 };
-var CheckboxGroup$1 = CheckboxGroup;
 
 var _excluded = ["children", "label", "helperText", "noStyle", "errorLevel"];
 
@@ -121,15 +118,15 @@ var inputLikeConponents = [material.TextField, material.Input, material.Outlined
 var syncLabelComponents = [material.Select, material.OutlinedInput];
 var specialValueComponents = [material.Rating, material.Autocomplete, material.ToggleButtonGroup, material.Slider];
 
-var FormItem = /*#__PURE__*/function (_Component) {
-  _inherits__default["default"](FormItem, _Component);
+var _FormControl = /*#__PURE__*/function (_Component) {
+  _inherits__default["default"](_FormControl, _Component);
 
-  var _super = _createSuper__default["default"](FormItem);
+  var _super = _createSuper__default["default"](_FormControl);
 
-  function FormItem() {
+  function _FormControl() {
     var _this;
 
-    _classCallCheck__default["default"](this, FormItem);
+    _classCallCheck__default["default"](this, _FormControl);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -216,7 +213,7 @@ var FormItem = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass__default["default"](FormItem, [{
+  _createClass__default["default"](_FormControl, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$registerAncesto;
@@ -295,7 +292,7 @@ var FormItem = /*#__PURE__*/function (_Component) {
 
           break;
 
-        case CheckboxGroup$1:
+        case CheckboxGroup:
           fieldProps.__TYPE__ = 'array';
           break;
 
@@ -456,10 +453,10 @@ var FormItem = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return FormItem;
+  return _FormControl;
 }(React.Component);
 
-FormItem.propTypes = {
+_FormControl.propTypes = {
   children: function children(props) {
     var _PropTypes$node;
 
@@ -484,9 +481,9 @@ FormItem.propTypes = {
   errorLevel: PropTypes__default["default"].number,
   noStyle: PropTypes__default["default"].bool
 };
-var FormItem$1 = FormItem;
 
-exports.FormControl = FormItem$1;
+exports.CheckboxGroup = CheckboxGroup;
+exports.FormControl = _FormControl;
 exports.setErrorLevel = setErrorLevel;
 Object.keys(reactFormutil).forEach(function (k) {
     if (k !== 'default' && !exports.hasOwnProperty(k)) Object.defineProperty(exports, k, {

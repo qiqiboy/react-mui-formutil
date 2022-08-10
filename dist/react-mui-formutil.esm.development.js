@@ -14,7 +14,6 @@ import React, { Children, cloneElement, Fragment, createElement, Component, crea
 import isEqual from 'react-fast-compare';
 
 var _excluded$1 = ["children", "name", "onChange", "value", "onFocus", "onBlur"];
-
 var CheckboxGroup = /*#__PURE__*/function (_React$Component) {
   _inherits(CheckboxGroup, _React$Component);
 
@@ -63,7 +62,6 @@ var CheckboxGroup = /*#__PURE__*/function (_React$Component) {
 
   return CheckboxGroup;
 }(React.Component);
-
 CheckboxGroup.formutilType = 'array';
 CheckboxGroup.propTypes = {
   onChange: PropTypes.func,
@@ -71,7 +69,6 @@ CheckboxGroup.propTypes = {
   onBlur: PropTypes.func,
   value: PropTypes.array
 };
-var CheckboxGroup$1 = CheckboxGroup;
 
 var _excluded = ["children", "label", "helperText", "noStyle", "errorLevel"];
 
@@ -104,15 +101,15 @@ var inputLikeConponents = [TextField, Input, OutlinedInput, FilledInput, Autocom
 var syncLabelComponents = [Select, OutlinedInput];
 var specialValueComponents = [Rating, Autocomplete, ToggleButtonGroup, Slider];
 
-var FormItem = /*#__PURE__*/function (_Component) {
-  _inherits(FormItem, _Component);
+var _FormControl = /*#__PURE__*/function (_Component) {
+  _inherits(_FormControl, _Component);
 
-  var _super = _createSuper(FormItem);
+  var _super = _createSuper(_FormControl);
 
-  function FormItem() {
+  function _FormControl() {
     var _this;
 
-    _classCallCheck(this, FormItem);
+    _classCallCheck(this, _FormControl);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -199,7 +196,7 @@ var FormItem = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(FormItem, [{
+  _createClass(_FormControl, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$registerAncesto;
@@ -278,7 +275,7 @@ var FormItem = /*#__PURE__*/function (_Component) {
 
           break;
 
-        case CheckboxGroup$1:
+        case CheckboxGroup:
           fieldProps.__TYPE__ = 'array';
           break;
 
@@ -439,10 +436,10 @@ var FormItem = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return FormItem;
+  return _FormControl;
 }(Component);
 
-FormItem.propTypes = {
+_FormControl.propTypes = {
   children: function children(props) {
     var _PropTypes$node;
 
@@ -467,6 +464,5 @@ FormItem.propTypes = {
   errorLevel: PropTypes.number,
   noStyle: PropTypes.bool
 };
-var FormItem$1 = FormItem;
 
-export { FormItem$1 as FormControl, setErrorLevel };
+export { CheckboxGroup, _FormControl as FormControl, setErrorLevel };

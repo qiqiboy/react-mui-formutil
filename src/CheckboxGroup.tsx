@@ -11,7 +11,7 @@ export interface CheckboxGroupProps extends Omit<FormGroupProps, 'onChange'> {
     children: React.ReactElement | React.ReactElement[];
 }
 
-class CheckboxGroup extends React.Component<CheckboxGroupProps> {
+export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     static formutilType = 'array';
     static propTypes = {
         onChange: PropTypes.func,
@@ -46,5 +46,3 @@ class CheckboxGroup extends React.Component<CheckboxGroupProps> {
         );
     }
 }
-
-export default CheckboxGroup;

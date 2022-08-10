@@ -23,7 +23,7 @@ import PropTypes from 'prop-types';
 import React, { Component, cloneElement, createElement, createContext, Fragment } from 'react';
 import { $FieldHandler, BaseEasyFieldComponentProps, EasyField, OtherKeys } from 'react-formutil';
 import isEqual from 'react-fast-compare';
-import CheckboxGroup from './CheckboxGroup';
+import { CheckboxGroup } from './CheckboxGroup';
 
 type RegisterField = ((name, $fieldutil) => void) | null;
 
@@ -66,7 +66,7 @@ const inputLikeConponents = [TextField, Input, OutlinedInput, FilledInput, Autoc
 const syncLabelComponents = [Select, OutlinedInput];
 const specialValueComponents = [Rating, Autocomplete, ToggleButtonGroup, Slider];
 
-class FormItem extends Component<FormControlComponentProps & OtherKeys> {
+class _FormControl extends Component<FormControlComponentProps & OtherKeys> {
     static propTypes = {
         children(props, ...args) {
             if ('name' in props) {
@@ -417,4 +417,4 @@ class FormItem extends Component<FormControlComponentProps & OtherKeys> {
     }
 }
 
-export default FormItem;
+export { _FormControl as FormControl };

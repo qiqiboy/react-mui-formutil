@@ -233,13 +233,6 @@ const App: React.FC<AppProps> = props => {
                                                 renderInput={params => <TextField {...params} fullWidth />}
                                             />
                                         </FormControl>
-                                        <Autocomplete
-                                                multiple
-                                                disablePortal
-                                            onChange={(...a) => console.log(a)}
-                                                options={top100Films}
-                                                renderInput={params => <TextField {...params} fullWidth />}
-                                            />
                                         <FormControl
                                             name="autocomplete.multiple"
                                             required

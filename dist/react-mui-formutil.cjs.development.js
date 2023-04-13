@@ -479,7 +479,7 @@ _FormControl.propTypes = {
   helperText: PropTypes__default["default"].any,
   controlProps: PropTypes__default["default"].object,
   //传递给FormControl组件的属性
-  errorLevel: PropTypes__default["default"].number,
+  errorLevel: PropTypes__default["default"].oneOf([0, 1, 2, 'off']),
   noStyle: PropTypes__default["default"].bool
 };
 

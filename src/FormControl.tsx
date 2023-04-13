@@ -34,7 +34,7 @@ const { Consumer, Provider } = createContext<RegisterField>(null);
  * 1 dirty & invalid
  * 2 invalid
  */
-export type ErrorLevel = 0 | 1 | 2;
+export type ErrorLevel = 0 | 1 | 2 | 'off';
 
 let errorLevelGlobal: ErrorLevel = 1;
 
@@ -80,7 +80,7 @@ class _FormControl extends Component<FormControlComponentProps & OtherKeys> {
         label: PropTypes.any,
         helperText: PropTypes.any,
         controlProps: PropTypes.object, //传递给FormControl组件的属性
-        errorLevel: PropTypes.number,
+        errorLevel: PropTypes.oneOf([0, 1, 2, 'off']),
         noStyle: PropTypes.bool
     };
 

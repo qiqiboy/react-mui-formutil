@@ -8,7 +8,7 @@ declare type RegisterField = ((name: any, $fieldutil: any) => void) | null;
  * 1 dirty & invalid
  * 2 invalid
  */
-export declare type ErrorLevel = 0 | 1 | 2;
+export declare type ErrorLevel = 0 | 1 | 2 | 'off';
 export declare const setErrorLevel: (level: ErrorLevel) => void;
 export interface FormControlComponentProps<T = any, P = {}, Fields = {}, WeakFields = Fields> extends BaseEasyFieldComponentProps<T, P, Fields, WeakFields>, Omit<FormControlProps, 'defaultValue' | 'required'> {
     label?: React.ReactNode;
@@ -23,7 +23,7 @@ declare class _FormControl extends Component<FormControlComponentProps & OtherKe
         label: PropTypes.Requireable<any>;
         helperText: PropTypes.Requireable<any>;
         controlProps: PropTypes.Requireable<object>;
-        errorLevel: PropTypes.Requireable<number>;
+        errorLevel: PropTypes.Requireable<string | number>;
         noStyle: PropTypes.Requireable<boolean>;
     };
     $fieldutil: any;

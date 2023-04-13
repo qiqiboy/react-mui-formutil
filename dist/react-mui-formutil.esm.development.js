@@ -462,7 +462,7 @@ _FormControl.propTypes = {
   helperText: PropTypes.any,
   controlProps: PropTypes.object,
   //传递给FormControl组件的属性
-  errorLevel: PropTypes.number,
+  errorLevel: PropTypes.oneOf([0, 1, 2, 'off']),
   noStyle: PropTypes.bool
 };
 

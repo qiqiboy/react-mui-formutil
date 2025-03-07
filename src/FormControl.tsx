@@ -337,7 +337,7 @@ class _FormControl extends Component<FormControlComponentProps & OtherKeys> {
                         $getFirstError()
                     );
 
-                    Object.assign(
+                    childProps = Object.assign(
                         {
                             [focusPropName]: onFocus,
                             [blurPropName]: onBlur

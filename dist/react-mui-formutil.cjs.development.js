@@ -404,7 +404,7 @@ var _FormControl = /*#__PURE__*/function (_Component) {
               validationProps = _this2$getValidationP.validationProps,
               error = _this2$getValidationP.error;
 
-          Object.assign((_Object$assign = {}, _defineProperty__default["default"](_Object$assign, focusPropName, onFocus), _defineProperty__default["default"](_Object$assign, blurPropName, onBlur), _Object$assign), childProps); // fix label
+          childProps = Object.assign((_Object$assign = {}, _defineProperty__default["default"](_Object$assign, focusPropName, onFocus), _defineProperty__default["default"](_Object$assign, blurPropName, onBlur), _Object$assign), childProps); // fix label
 
           if (syncLabelComponents.includes(component) && label) {
             childProps.label = label;
